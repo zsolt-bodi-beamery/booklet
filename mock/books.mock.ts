@@ -6,10 +6,24 @@ let localBooks = books;
 export default (): MockHandler[] => [
   {
     pattern: '/api/books',
-    handle: (_, res) => {
+    handle: (req, res) => {
       res.setHeader('Content-type', 'application/json');
+      let books = [...localBooks];
+      if (req.query.q) {        
+        if (req.query.q.length < 3) {
+          res.statusCode = 422;
+          res.end();
+          return;
+        }
+        books = books.filter((b) => {
+          return b.title.toLowerCase().includes(req.query.q);
+        })
+      }
+      if (!books.length) {
+        res.statusCode = 404
+      }
       res.statusCode = 200;
-      res.end(JSON.stringify(localBooks));
+      res.end(JSON.stringify(books));
     }
   },
   {
@@ -37,5 +51,6 @@ export default (): MockHandler[] => [
       res.statusCode = 201;
       res.end();
     }
-  }
+  },
+  
 ]
