@@ -10,7 +10,7 @@ paths:
       parameters:
         - name: q
           in: query
-          description: Query string to filter books by title, author, or genre
+          description: Query string to filter books by title
           schema:
             type: string
             minLength: 3
