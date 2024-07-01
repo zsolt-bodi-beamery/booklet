@@ -16,7 +16,7 @@ export default (): MockHandler[] => [
           return;
         }
         books = books.filter((b) => {
-          return b.title.toLowerCase().includes(req.query.q);
+          return b.title.toLowerCase().includes(req.query.q.toLowerCase());
         })
       }
       if (!books.length) {
