@@ -4,6 +4,7 @@ import styled from "styled-components";
 
 const AppWrapper = styled.main`
   padding-bottom: 2rem;
+  background-color: rgba(243,244,246,1)
 `
 
 const AppHeader = styled.header`
@@ -96,9 +97,7 @@ const BookImage = styled.img`
 `
 
 const BookCover = styled.div`
-  --bm-drop-shadow: drop-shadow(0 20px 13px rgb(0 0 0 / 0.03)) drop-shadow(0 8px 5px rgb(0 0 0 / 0.08));
-  filter: var(--bm-drop-shadow);
-
+  filter: drop-shadow(0 20px 13px rgb(0 0 0 / 0.03)) drop-shadow(0 8px 5px rgb(0 0 0 / 0.08));
 
   &:after {
     content: '';
